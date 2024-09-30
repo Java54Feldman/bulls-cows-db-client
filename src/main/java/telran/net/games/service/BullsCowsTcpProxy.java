@@ -12,7 +12,6 @@ import telran.net.Request;
 import telran.net.TcpClient;
 import telran.net.games.model.GameGamerDto;
 import telran.net.games.model.MoveData;
-//import telran.net.games.model.MoveDto;
 import telran.net.games.model.SequenceGameGamerDto;
 import telran.net.games.model.UsernameBirthdate;
 
@@ -109,7 +108,6 @@ public class BullsCowsTcpProxy implements BullsCowsService {
 		
 		return tcpClient.sendAndReceive(new Request("loginGamer", username));
 	}
-	
 	
 	
 	private<T> List<T> getListObjects(String listOfData,
