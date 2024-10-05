@@ -2,6 +2,7 @@ package telran.net.games;
 
 import java.time.LocalDate;
 import java.util.*;
+import java.util.stream.Collectors;
 
 import telran.net.games.model.MoveData;
 import telran.net.games.service.BullsCowsService;
@@ -55,7 +56,10 @@ public class BullsCowsApplicationItems {
 		} else {
 		io.writeLine("Below are started game ID's, you are a gamer in");
 		displayLines(ids, io);
-		gameId = io.readLong("Enter any id from the above list", "Wrong ID");
+		HashSet<String> idsSet = ids.stream()
+                .map(String::valueOf) 
+                .collect(Collectors.toCollection(HashSet::new)); 
+		gameId = Long.parseLong(io.readStringOptions("Enter any id from the above list", "Wrong ID", idsSet));
 		//FIXME display all moves of the gamer in the game (no appropriate service method)
 		runGameMenu(io);
 		}
